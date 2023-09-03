@@ -5,6 +5,9 @@ const ejs = require('ejs');
 const expresslayout = require('express-ejs-layouts');
 const path = require('path');
 
+//Asset for view (tell express)
+app.use(express.static('public'));
+
 app.get('/',(req,res)=>{
     res.render('home')  
 })
