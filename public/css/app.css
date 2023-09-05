@@ -27,7 +27,7 @@ section.hero {
 }
 
 .add-to-cart {
-  border: 2px solid #FE5F1E;
+  border: 3px solid #FE5F1E;
   color: #FE5F1E;
   transition: all 0.3s ease-in-out;
 }
@@ -35,4 +35,45 @@ section.hero {
   background-color: #FE5F1E;
   border-color: #FFF;
   color: #FFF;
+}
+
+section.cart {
+  background: #F8F8F8;
+}
+section.cart .amount {
+  color: #FE5F1E;
+}
+
+section.login {
+  background: #F8F8F8;
+  min-height: calc(100vh - 86px);
+}
+
+section.register {
+  background: #F8F8F8;
+  min-height: calc(100vh - 86px);
+}
+
+.btn-primary {
+  background: #FE5F1E;
+  transition: all 0.3s ease-in-out;
+}
+.btn-primary:hover {
+  background-color: #B23301;
+}
+
+section.login a {
+  color: #FE5F1E;
+  transition: all 0.3s ease-in-out;
+}
+section.login a:hover {
+  color: #B23301;
+}
+
+section.register a {
+  color: #FE5F1E;
+  transition: all 0.3s ease-in-out;
+}
+section.register a:hover {
+  color: #B23301;
 }

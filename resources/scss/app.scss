@@ -28,7 +28,7 @@ section.hero{
 }
 
 .add-to-cart{
-    border: 2px solid $primary;
+    border: 3px solid $primary;
     color: $primary;
     transition: $smooth;
     &:hover{
@@ -38,3 +38,45 @@ section.hero{
     }
 
 }
+section.cart{
+    background: $secondary;
+    .amount{
+        color: $primary;
+    }
+}
+
+section.login{
+    background: $secondary;
+    min-height: calc(100vh - 86px);
+}
+
+section.register{
+    background: $secondary;
+    min-height: calc(100vh - 86px);
+}
+
+.btn-primary{
+    background : $primary;
+    transition: $smooth;
+    &:hover{
+        background-color: $primary-hover;
+    }
+}
+
+section.login a{
+    color: $primary;
+    transition: $smooth;
+    &:hover{
+        color: $primary-hover;
+    }
+}
+section.register a{
+    color: $primary;
+    transition: $smooth;
+    &:hover{
+        color: $primary-hover;
+    }
+}
+
+
+

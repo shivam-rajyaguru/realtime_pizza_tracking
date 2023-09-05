@@ -8,14 +8,26 @@ const path = require('path');
 //Asset for view (tell express)
 app.use(express.static('public'));
 
-app.get('/',(req,res)=>{
-    res.render('home')  
-})
-
 //set templates
 app.use(expresslayout);
 app.set("views", path.join(__dirname,"./resources/views"));
 app.set("view engine","ejs");
+
+app.get('/',(req,res)=>{
+    res.render('home')  
+})
+
+app.get('/login' , (req,res)=>{
+    res.render('auth/login')
+})
+
+app.get('/register' , (req,res)=>{
+    res.render('auth/register')
+})
+
+app.get('/cart',(req,res)=>{
+    res.render('customer/cart')
+})
 
 app.listen(port , ()=>{
     console.log(`Listening on port: ${port}`);
