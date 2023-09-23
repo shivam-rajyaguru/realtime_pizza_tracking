@@ -1,4 +1,4 @@
-const Menu = require('../../app/models/menu');
+const Menu = require('../../models/menu');
 function homeController() {
     //return as a object 
     //this function is called factory function it means it produce some product in function like factory and return object
