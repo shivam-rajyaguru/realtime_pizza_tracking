@@ -7,6 +7,9 @@ const passport = require('passport')
 const { error, info } = require('laravel-mix/src/Log');
 
 function authController() {
+    const _getRedirectUrl =  (req) => {
+        return req.user.role === 'admin' ? '/admin/orders' : '/customer/orders'
+    }
     //return as a object 
     //this function is called factory function it means it produce some product in function like factory and return object
 
@@ -37,7 +40,7 @@ function authController() {
                         req.flash('error', info.message)
                         return next(err)
                     }
-                    return res.redirect('/')
+                    return res.redirect(_getRedirectUrl(req))
                 })
             })(req,res,next)
         },   

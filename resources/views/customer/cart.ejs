@@ -32,18 +32,20 @@
           &#8377;<%= session.cart.totalPrice %>
         </span>
       </div>
-
+      <% if(user) { %>
       <div>
-          <form action="" class="mt-12">
-            <input type="text" class="border border-gray-400 p-2 w-1/2 mb-4" name="number" id="number" placeholder="Phone Number :">
-            <input type="text" class="border border-gray-400 p-2 w-1/2" name="add" id="add" placeholder="Address :">
+          <form action="/orders" method="post" class="mt-12">
+            <input type="text" class="border border-gray-400 p-2 w-1/2 mb-4" name="phone" id="phone" placeholder="Phone Number :">
+            <input type="text" class="border border-gray-400 p-2 w-1/2" name="address" id="address" placeholder="Address :">
             <div>
-              <!-- <button class="btn-primary px-6 py-2 rounded-full text-white font-bold mt-6 " type="submit">Order now</button> -->
-              <a href="" class="inline-block cursor-pointer btn-primary px-6 py-2 rounded-full text-white font-bold mt-6">Order now</a>
+              <button class="btn-primary px-6 py-2 rounded-full text-white font-bold mt-6 " type="submit">Order now</button>
+              <!-- <a href="" class="inline-block cursor-pointer btn-primary px-6 py-2 rounded-full text-white font-bold mt-6" type="submit">Order now</a> -->
             </div>
           </form>
       </div>
-      <!-- <a href="" class="inline-block cursor-pointer btn-primary px-6 py-2 rounded-full text-white font-bold mt-6">Login to continue</a> -->
+      <% } else { %>
+      <a href="/login" class="inline-block cursor-pointer btn-primary px-6 py-2 rounded-full text-white font-bold mt-6">Login to continue</a>
+      <% } %>
     </div>
   </div>
 

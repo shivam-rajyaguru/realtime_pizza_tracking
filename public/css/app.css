@@ -317,3 +317,7 @@ section.register a {
 section.register a:hover {
   color: #B23301;
 }
+
+a.link {
+  color: #FE5F1E;
+}
