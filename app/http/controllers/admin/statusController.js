@@ -8,6 +8,8 @@ function statusController(){
                     return res.redirect('/admin/orders')
                 }
                 else{
+                    const eventEmitter = req.app.get('eventEmitter')
+                    eventEmitter.emit('orderUpdate',{id:req.body.orderId , status : req.body.status})
                     return res.redirect('/admin/orders')
                 }
             })

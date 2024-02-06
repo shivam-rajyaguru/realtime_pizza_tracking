@@ -61,6 +61,10 @@ let time = document.createElement('small')
 // console.log(order);
 
 function updateStatus(order){
+    statuses.forEach((status)=>{
+        status.classList.remove('step-completed')
+        status.classList.remove('current')
+    })
     let stepComplete = true;
     statuses.forEach((status)=>{
         let dataProps = status.dataset.status
@@ -78,3 +82,26 @@ function updateStatus(order){
     })
 }
 updateStatus(order)
+
+//socket
+let socket = io();
+
+//Join
+
+if(order){
+    socket.emit('join',`order_${order._id}`)  //order_5dfjnfdnjdsjnd89
+}
+
+socket.on('orderUpdate',(data)=>{
+    const updateOrder = {...order}
+    updateOrder.updateAt = moment().format()
+    updateOrder.status = data.status
+    updateStatus(updateOrder)
+    new Noty({
+        type : 'success',
+        timeout : 1000,
+        progressBar : false,
+        // layout : 'bottomCenter',
+        text : 'Order Updated'
+    }).show();
+})

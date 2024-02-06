@@ -9,6 +9,7 @@ const session = require('express-session');
 const flash = require('express-flash');
 const MongoDbStore = require('connect-mongo');
 const passport = require('passport');
+const Emitter = require('events');
 
 //database connection
 const mongoose = require('mongoose');
@@ -16,6 +17,11 @@ const mongoose = require('mongoose');
 mongoose.connect('mongodb://127.0.0.1:27017/pizzas')
 .then(() => console.log('Database connected'))
 .catch((error)=> console.log(error))
+
+// Event Emitter
+
+const eventEmitter = new Emitter()
+app.set('eventEmitter' , eventEmitter)
 
 //session config
 app.use(session({
@@ -31,7 +37,8 @@ app.use(flash());
 
 
 //config passport
-const passportInit = require('./app/config/passport')
+const passportInit = require('./app/config/passport');
+const { Socket } = require('dgram');
 passportInit(passport)
 
 app.use(passport.initialize())
@@ -60,7 +67,21 @@ require('./routes/web')(app);
 
 
 
-app.listen(port , ()=>{
+const server = app.listen(port , ()=>{
     console.log(`Listening on port: ${port}`);
 })  
 
+const io = require('socket.io')(server)
+io.on('connection',(socket)=>{
+   
+    //Join
+    // console.log(socket.id);
+    socket.on('join',(orderId)=>{
+        console.log(orderId);
+        socket.join(orderId)
+    })
+})
+
+eventEmitter.on('orderUpdate',(data)=>{
+    io.to(`order_${data.id}`).emit('orderUpdate',data)
+})
